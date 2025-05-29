@@ -53,6 +53,11 @@ def main():
             if getHandValue(playerHand) > 21:
                 break
 
+            # Get the player's move: H, S, or D
+            move = getMove(playerHand, yourMoney-bet)
+
+
+
 
 
 def getBet(maxBet):
@@ -138,6 +143,24 @@ def displayCards(cards):
     for row in rows:
         print(row)
 
+
+def getMove(playerHand, yourMoney):
+    '''Return input move back'''
+    while True:
+        moves = ['(H)it', '(S)tand']
+
+        # Only can (D)ouble down when initial aka 2 cards and has money
+        if len(playerHand) == 2 and yourMoney > 0:
+            moves.append('(D)ouble')
+        
+        # Get the player's move
+        movePrompt = ', '.join(moves) + '> '
+        move = input(movePrompt).upper()
+        if move in ('H', 'S'):
+            return move
+        if move ==  'D' and '(D)ouble' in moves:
+            return move
+        
 
 # initialize the main function and run the program
 if __name__ == '__main__':
