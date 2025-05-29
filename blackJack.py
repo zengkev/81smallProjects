@@ -75,10 +75,11 @@ def getDeck():
     deck = []
     for suit in (Hearts, Diamonds, Spades, Clubs):
         for rank in range(2, 11): # 9 non face cards
-            deck.append(str(rank), suit)
+            deck.append((str(rank), suit))
         for rank in ('J', 'Q', 'K', 'A'): # Face and Ace cards
-            deck.append(str(rank),suit)
-    return random.shuffle(deck)
+            deck.append((rank, suit))
+    random.shuffle(deck)
+    return deck
 
 
 def displayHands(playerHand, dealerHand, showDealerHand):
@@ -121,8 +122,21 @@ def getHandValue(cards):
 
 def displayCards(cards):
     ''' Return card image '''
-        
-        
+    rows = ['', '', '', '', '']
+
+    for i, card in enumerate(cards):
+        rows[0] += ' ___  '
+        if card == Backside:
+            rows[1] += '|## | '
+            rows[2] += '|###| '
+            rows[3] += '| ##| '
+        else:
+            rank, suit = card # card structure
+            rows[1] += '|{} | '.format(rank.ljust(2))
+            rows[2] += '| {} | '.format(suit)
+            rows[3] += '|_{}| '.format(rank.rjust(2, '_'))    
+    for row in rows:
+        print(row)
 
 
 # initialize the main function and run the program
