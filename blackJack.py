@@ -54,9 +54,44 @@ def main():
                 break
 
             # Get the player's move: H, S, or D
-            move = getMove(playerHand, yourMoney-bet)
+            move = getMove(playerHand, yourMoney - bet)
 
+            # Handle Player moves
+            if move == 'D':
+                additionalbet = getBet(min(bet, (yourMoney - bet))) # bet up to available fund
+                bet += additionalbet
+                print('Bet increase to {}.'.format(bet))
+                print('Bet: ', bet)
 
+            if move in ('H', 'D'):
+                newCard = deck.pop()
+                rank, suit = newCard
+                print('You drew a {} of {}.'.format(rank, suit))
+                playerHand.append(newCard)
+
+                if getHandValue(playerHand) > 21:
+                    continue
+            
+            if move in ('S', 'D'):
+                break
+
+        # Handle dealer hand
+
+        if getHandValue(playerHand) <= 21:
+            while getHandValue(dealerHand) <= 17:
+                # dealer draw another card
+                print('Dealer Hits.....')
+                dealerHand.append(deck.pop())
+                displayCards(playerHand, dealerHand, False)
+            
+            if getHandValue(dealerHand) > 21:
+                break
+            input('Press Enter to continue...')
+            print('\n\n')
+
+        # show final hands:
+        displayHands(playerHand, dealerHand, True)
+        
 
 
 
