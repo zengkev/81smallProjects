@@ -82,7 +82,7 @@ def main():
                 # dealer draw another card
                 print('Dealer Hits.....')
                 dealerHand.append(deck.pop())
-                displayCards(playerHand, dealerHand, False)
+                displayCards((playerHand, dealerHand, False))
             
             if getHandValue(dealerHand) > 21:
                 break
@@ -91,10 +91,25 @@ def main():
 
         # show final hands:
         displayHands(playerHand, dealerHand, True)
+
+        playerValue = getHandValue(playerHand)
+        dealerValue = getHandValue(dealerHand)
+
+        if dealerValue > 21:
+            print('Dealer busted: You win ${}'.format(bet))
+            yourMoney += bet
+        elif (playerValue > 21) or playerValue < dealerValue:
+            print('Dealer wins: You lost ${}'.format(bet))
+            yourMoney -= bet
+        elif playerValue > dealerValue:
+            print('You win ${}'.format(bet))
+            yourMoney += bet
+        elif playerValue == dealerValue:
+            print('It\'s a tie, the bet is returned to you')
         
-
-
-
+        input('Press Enter to play again')
+        print('\n\n')
+                
 def getBet(maxBet):
     while True:
         print('How much do you want to bet? (1 to {}, or QUIT)'.format(maxBet))
