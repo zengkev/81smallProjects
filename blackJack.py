@@ -78,16 +78,16 @@ def main():
         # Handle dealer hand
 
         if getHandValue(playerHand) <= 21:
-            while getHandValue(dealerHand) <= 17:
+            while getHandValue(dealerHand) < 17:
                 # dealer draw another card
                 print('Dealer Hits.....')
                 dealerHand.append(deck.pop())
-                displayCards((playerHand, dealerHand, False))
+                displayHands(playerHand, dealerHand, False)
             
-            if getHandValue(dealerHand) > 21:
-                break
-            input('Press Enter to continue...')
-            print('\n\n')
+                if getHandValue(dealerHand) > 21:
+                    break
+                input('Press Enter to continue...')
+                print('\n\n')
 
         # show final hands:
         displayHands(playerHand, dealerHand, True)
