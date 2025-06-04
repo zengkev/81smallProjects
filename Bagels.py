@@ -5,7 +5,7 @@ import random
 
 # Init
 
-GUESS_DIGITS = random.randint(1, 5) # Try 1 to 8
+GUESS_DIGITS = random.randint(1, 5) # Try 1 to 825
 MAX_GUESSES = random.randint(6, 20) # Try 5 to 30
 
 def main():
@@ -23,7 +23,7 @@ def main():
         # This stores the secret number by random
         secretNum = getSecretNum()
         print('I have a number in mind.')
-        print(' You have {} guesses to get it.'.format(MAX_GUESSES))
+        print('You have {} guesses to get it.'.format(MAX_GUESSES))
 
         # Start guessing
         numGuesses = 1
