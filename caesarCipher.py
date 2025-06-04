@@ -1,11 +1,13 @@
 'Casear Cipher by Jing Wei Zeng'
-
+'''
 try:
     import pyperclip
 except ImportError:
     pass
+'''
+import string
 
-SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+SYMBOLS =  string.ascii_uppercase + string.digits + string.punctuation
 
 print("Ceasear Cipher encrypts by shifting the letter over.")
 
@@ -38,7 +40,7 @@ message = input('> ')
 
 message = message.upper()
 
-translate = ''
+translated = ''
 
 for symbol in message:
     if symbol in SYMBOLS:
@@ -53,15 +55,15 @@ for symbol in message:
         elif num < 0:
             num = num + len(SYMBOLS)
 
-        translate = translate + SYMBOLS[num]
+        translated += SYMBOLS[num]
     else:
-        translate = translate + symbol
+        translated += symbol
 
-print(translate)
-
+print("{}ed message: ".format(mode) + translated)
+'''
 try:
-    pyperclip.copy(translate)
+    pyperclip.copy(translated)
     print('Full {}ed text copied to clipboard'.format(mode))
 except:
     pass
-
+'''
