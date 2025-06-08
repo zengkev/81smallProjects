@@ -1,4 +1,7 @@
-'''Let's play some Black Jack'''
+'''Let's play some Black Jack by Jing Wei Zeng'''
+
+print('Linkedin: https://www.linkedin.com/in/zengkev/')
+
 
 import random, sys
 
