@@ -49,7 +49,7 @@ while True:
     while True:
         # bet is even or odd
         bet = input('> ').upper()
-        if bet != 'CHO' or bet != 'HAN':
+        if bet != 'CHO' and bet != 'HAN':
             print('Only bet "CHO" or "HAN"!!')
             continue
         else:
@@ -57,7 +57,7 @@ while True:
 
     print('Dealer lifts the cup!!')
     print('  ', rollingDice[dice1], '-', rollingDice[dice2])
-    print('     ', dice1 '-', dice2)
+    print('     ', dice1, '-', dice2)
 
     # determine even or odd and who own
     rollIsEven = (dice1 + dice2) % 2 == 0
@@ -71,6 +71,14 @@ while True:
     if playerWon:
         print('You Won!! You take', pot, 'mon.')
         print('House take 10% cut')
-        purse += (pot // 10)
+        purse += (pot - (pot // 10))
         print('You have ', purse, 'Now!!')
+    else:
+        print('Dealer Won!!')
+        purse -= pot
+        print('You have', purse, 'left.')
+
+    if purse <= 0:
+        print('Game Ends Here')
+
             
