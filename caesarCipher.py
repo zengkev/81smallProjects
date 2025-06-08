@@ -1,6 +1,9 @@
 'Casear Cipher by Jing Wei Zeng'
+<<<<<<< HEAD
 print('Linkedin: https://www.linkedin.com/in/zengkev/')
 
+=======
+>>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
 '''
 try:
     import pyperclip

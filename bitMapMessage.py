@@ -1,10 +1,13 @@
 ''' This program uses a multiline string to draw a 2D image of a map
     using bitmap.splitlines() and message[i % len(message)]'''
 
+<<<<<<< HEAD
 
 print('Linkedin: https://www.linkedin.com/in/zengkev/')
 
 
+=======
+>>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
 import sys
 
 
