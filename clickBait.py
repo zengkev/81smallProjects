@@ -42,52 +42,60 @@ def main():
     print('By Jing Wei Zeng')
     print()
 
-print('Our website needs to trick people into clicking ads')
-while True:
-    print('Enter the number of clickbait headlines to generator:')
-    response = input('> ')
-    if not response.isdecimal():
-        print('Please enter a number')
-    else:
-        numberOfHeadlines = int(response)
-        break
+    print('Our website needs to trick people into clicking ads')
+    while True:
+        print('Enter the number of clickbait headlines to generator:')
+        response = input('> ')
+        if not response.isdecimal():
+            print('Please enter a number')
+        else:
+            numberOfHeadlines = int(response)
+            break
 
-for i in range(numberOfHeadlines):
-    clickBaitType = random.randint(1, 8)
+    for i in range(numberOfHeadlines):
+        clickBaitType = random.randint(1, 8)
 
-    if clickBaitType == 1:
-        headline = generateAreMillennialsKillingHeadline()
-    elif clickBaitType == 2:
-        headline = generateWhatYouDontKnowHeadline()
-    elif clickBaitType == 3:
-        headline = generateBigCompaniesHateHerHeadline()
-    elif clickBaitType == 4:
-        headline = generateYouWontBelieveHeadline()
-    elif clickBaitType == 5:
-        headline = generateDontWantYouToKnowHeadline()
-    elif clickBaitType == 6:
-        headline = generateGiftIdeaHeadline()
-    elif clickBaitType == 7:
-        headline = generateReasonsWhyHeadline()
-    elif clickBaitType == 8:
-        headline = generateJobAutomatedHeadline()
+        if clickBaitType == 1:
+            headline = generateAreMillennialsKillingHeadline()
+        elif clickBaitType == 2:
+            headline = generateWhatYouDontKnowHeadline()
+        elif clickBaitType == 3:
+            headline = generateBigCompaniesHateHerHeadline()
+        elif clickBaitType == 4:
+            headline = generateYouWontBelieveHeadline()
+        elif clickBaitType == 5:
+            headline = generateDontWantYouToKnowHeadline()
+        elif clickBaitType == 6:
+            headline = generateGiftIdeaHeadline()
+        elif clickBaitType == 7:
+            headline = generateReasonsWhyHeadline()
+        elif clickBaitType == 8:
+            headline = generateJobAutomatedHeadline()
     
-    print(headline)
-print()
+        print(headline)
+    print()
 
-website = random.choice(['wobsite', 'blag', 'FaceBuuk', 'Googles', 
+    website = random.choice(['wobsite', 'blag', 'FaceBuuk', 'Googles', 
                          'Facesbook', 'Tweedie', 'Pastagram'])
-when = random.choice(WHEN).lower()
-print('Post these to our', website, when, 'or you\'re fired')
+    when = random.choice(WHEN).lower()
+    print('Post these to our', website, when, 'or you\'re fired')
 
 def generateAreMillennialsKillingHeadline():
     noun = random.choice(NOUNS)
     return 'Are Millennials Killing the {} Industry?'.format(noun)
 
+def generateWhatYouDontKnowHeadline():
     noun = random.choice(NOUNS)
     pluralNoun = random.choice(NOUNS) + 's'
-    when = 
+    when = random.choice(WHEN)
+    return 'Without This {}, {} Could KILL You {}'.format(noun, pluralNoun, when)
 
+def generateBigCompaniesHateHerHeadline():
+    pronoun = random.choices(ojbectPronouns)
+    state = random.choice(STATES)
+    noun1 = random.choice(NOUNS)
+    noun2 = random.choice(NOUNS)
+    return 'Big Companies Hate {}!! See How This {} {} Invented a Cheaper {}'.format(pronoun, state, noun1, noun2)
 
 if __name__=='__main__':
     main()
