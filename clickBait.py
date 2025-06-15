@@ -36,6 +36,7 @@ PLACES = ['House', 'Attic', 'Bank Deposit Box', 'School',
 WHEN = ['Soon', 'This Year', 'Later Today', 'RIGHT NOW', 'Next Week']
 
 
+noun = random.choice(NOUNS)
 
 def main():
     print('Clickbait headline generator')
