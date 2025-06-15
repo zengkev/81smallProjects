@@ -33,4 +33,10 @@ while True:
     else:
         pass
 
-
+'''
+what happens if you change (' ' * gapWidth) to ('.' * gapWidth)??
+change random.randint(1, 1) or (2, 2)
+what if you delete leftWidth * 20?
+what if WIDTH = - 70
+what if PAUSE_AMOUNT = -0.05?
+'''
