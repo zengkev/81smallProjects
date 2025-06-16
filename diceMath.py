@@ -79,7 +79,10 @@ D6b = (['+-------+'
 ALL_DICE = [D1, D2a, D2b, D3a, D3b, D4, D5, D6a, D6b]
 
 # How to play the game message
-
+print('''How to play? Add up the sides of all the dices.
+        You have {} seconds to answer as much as possible.
+      You get {} pointsfor each correct
+      You get {} points for each incorrect'''.format(QUIZ_DURATION, REWARD, PENALTY))
 input('Press Enter to begin...')
 
 # Keep track of how many answers were correct and incorrect
