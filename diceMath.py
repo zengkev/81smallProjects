@@ -8,11 +8,75 @@ print()
 import random, time
 
 # Set up the constants
-
+DICE_WIDTH = 9
+DICE_HEIGHT = 5
+CANVAS_WIDTH = 79
+CANVAS_HEIGHT = 24 - 3 # space to display the sum
 
 # Set up the durations
-
+QUIZ_DURATION = 30
+MIN_DICE = 2
+MAX_DICE = 6
+REWARD = 4
+PENALTY = 1
 # Draw Dice Faces
+assert MAX_DICE <= 14
+
+D1 = (['+-------+'
+       '|       |'
+       '|   0   |'
+       '|       |'
+       '+-------+', 1])
+
+D2a = (['+-------+'
+        '| 0     |'
+        '|       |'
+        '|     0 |'
+        '+-------+', 2])
+
+D2b = (['+-------+'
+        '|     0 |'
+        '|       |'
+        '| 0     |'
+        '+-------+', 2])
+
+D3a = (['+-------+'
+        '| 0     |'
+        '|   0   |'
+        '|     0 |'
+        '+-------+', 3])
+
+D3b = (['+-------+'
+        '|     0 |'
+        '|   0   |'
+        '| 0     |'
+        '+-------+', 3])
+
+D4 = (['+-------+'
+       '| 0   0 |'
+       '|       |'
+       '| 0   0 |'
+       '+-------+', 4])
+
+D5 = (['+-------+'
+       '| 0   0 |'
+       '|   0   |'
+       '| 0   0 |'
+       '+-------+', 5])
+
+D6a = (['+-------+'
+        '| 0   0 |'
+        '| 0   0 |'
+        '| 0   0 |'
+        '+-------+', 6])
+
+D6b = (['+-------+'
+        '| 0 0 0 |'
+        '|       |'
+        '| 0 0 0 |'
+        '+-------+', 6])
+
+ALL_DICE = [D1, D2a, D2b, D3a, D3b, D4, D5, D6a, D6b]
 
 # How to play the game message
 
