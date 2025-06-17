@@ -89,9 +89,47 @@ input('Press Enter to begin...')
 correct = 0
 incorrect = 0
 startTime = time.time()
-
+while time.time() < startTime + QUIZ_DURATION:
     # start the timer and main loop
+    sumAnswer = 0
+    diceFaces = []
+    for i in range(random.randint(MIN_DICE, MAX_DICE)):
+        die = random.choice(ALL_DICE)
+        diceFaces.append(die[0])
+        sumAnswer += die[1]
+    
+    # Contains (x, y) tuples to the top left corner of each die
+    topLeftDiceCorner = []
+    for i in range(len(diceFaces)):
+        while True:
+            # place dice randomly on canvas
+            left = random.randint(0, CANVAS_WIDTH - 1 - DICE_WIDTH)
+            top = random.randint(0, CANVAS_HEIGHT - 1 - DICE_HEIGHT)
+            # Get the coordinates for all four corners
+            topLeftX = left
+            topLeftY = top
+            topRightX = left + DICE_WIDTH
+            topRightY = top
+            bottomLeftX = left
+            bottomLeftY = top + DICE_HEIGHT
+            bottomRightX = left + DICE_WIDTH
+            bottomRightY = top + DICE_HEIGHT
 
+            # check if this die overlaps with previous dice
+            overlaps = False
+            for prevDiceLeft, prevDiceTop in topLeftDiceCorner:
+                prevDiceRight = prevDiceLeft + DICE_WIDTH
+                prevDiceBottom = prevDiceTop + DICE_HEIGHT
+                for cornerX, cornerY in ((topLeftX, topLeftY),
+                                         (topRightX, topRightY),
+                                         (bottomLeftX, bottomLeftY),
+                                         (bottomRightX, bottomRightY)):
+                    if (prevDiceLeft <= cornerX < prevDiceRight
+                        and prevDiceTop <= cornerY < prevDiceBottom):
+                        overlaps = True
+                if not overlaps:
+                    topLeftDiceCorner.append((left, top))
+                    break
     # draw the dice on the canvas
 
 
