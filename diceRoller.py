@@ -64,3 +64,19 @@ while True:
             rolls.append(rollResult)
         
         print('TOtal:', sum(rolls) + modAmount, '(Each die:', end='')
+
+        # Display each rolls
+        for i, roll in enumerate(rolls):
+            rolls[i] = str(roll)
+        print(', '.join(rolls), end='')
+
+        # Display the modifier amount
+        if modAmount != 0:
+            modSign = diceStr[modIndex]
+            print(', {}{}'.format(modSign, abs(modAmount)), end='')
+        print(')')
+    
+    except Exception as exc:
+        print('Invalid Input. Enter something like "3d6" or "2d23+2".')
+        print('INput was invalid because: ' + str(exc))
+        continue
