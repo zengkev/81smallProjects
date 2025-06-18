@@ -127,16 +127,32 @@ while time.time() < startTime + QUIZ_DURATION:
                     if (prevDiceLeft <= cornerX < prevDiceRight
                         and prevDiceTop <= cornerY < prevDiceBottom):
                         overlaps = True
-                if not overlaps:
-                    topLeftDiceCorner.append((left, top))
-                    break
+            if not overlaps:
+                topLeftDiceCorner.append((left, top))
+                break
     # draw the dice on the canvas
-
+    canvas = {}
+    for i, (diceLeft, diceTop) in enumerate(topLeftDiceCorner):
+        dieFace = diceFaces[i]
+        for dx in range(DICE_WIDTH):
+            for dy in range(DICE_HEIGHT):
+                canvasX = diceLeft + dx
+                canvaxY = diceTop + dy
+                canvas[(canvasX, canvaxY)] = dieFace[dy][dx]
 
     # Display the canvas on the screen
-
+    for cy in range(CANVAS_HEIGHT):
+        for cx in range(CANVAS_WIDTH):
+            print(canvas.get((cx, cy), ' '), end='')
+            print()
     # Let the player enter their answers
-
+    response = input('Enter the sum: ').strip()
+    if response.isdecimal() and int(response) == sumAnswer:
+        correct += 1
+    else:
+        print('Incorrect, the answer is', sumAnswer)
+        time.sleep(2)
+        incorrect += 1
 
 # Display the final scores
 
