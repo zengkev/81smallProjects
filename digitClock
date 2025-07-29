@@ -37,7 +37,7 @@ try:
         print('Press CTRL + C to quite')
 
         while True:
-            time.sleep(0.01)
+            time.sleep(.005)
             if time.localtime().tm_sec != currentTime.tm_sec:
                 break
 
