@@ -1,6 +1,8 @@
 """Generate large amount of simulations on a set group of randomized birthdays, 
     show the probability of how much group contains group member with the same birthday"""
 
+print('Linkedin: https://www.linkedin.com/in/zengkev/')
+
 
 import datetime, random
 

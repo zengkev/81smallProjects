@@ -1,4 +1,19 @@
+<<<<<<< HEAD
 '''Let's play some Black Jack'''
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+'''Let's play some Black Jack by Jing Wei Zeng'''
+
+print('Linkedin: https://www.linkedin.com/in/zengkev/')
+
+=======
+'''Let's play some Black Jack'''
+>>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
+=======
+'''Let's play some Black Jack'''
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
+>>>>>>> dev
 
 import random, sys
 
@@ -43,6 +58,15 @@ def main():
         dealerHand = [deck.pop(), deck.pop()]
         playerHand = [deck.pop(), deck.pop()]
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+        break
+=======
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
+>>>>>>> dev
         # Handle the player's actions
         print('Player bet:', bet)
         while True:
@@ -110,6 +134,13 @@ def main():
         input('Press Enter to play again')
         print('\n\n')
                 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
+>>>>>>> dev
 def getBet(maxBet):
     while True:
         print('How much do you want to bet? (1 to {}, or QUIT)'.format(maxBet))
@@ -130,6 +161,23 @@ def getDeck():
     deck = []
     for suit in (Hearts, Diamonds, Spades, Clubs):
         for rank in range(2, 11): # 9 non face cards
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+            deck.append(str(rank), suit)
+        for rank in ('J', 'Q', 'K', 'A'): # Face and Ace cards
+            deck.append(str(rank),suit)
+    return random.shuffle(deck)
+
+
+
+        
+
+=======
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
+>>>>>>> dev
             deck.append((str(rank), suit))
         for rank in ('J', 'Q', 'K', 'A'): # Face and Ace cards
             deck.append((rank, suit))
@@ -211,6 +259,13 @@ def getMove(playerHand, yourMoney):
         if move ==  'D' and '(D)ouble' in moves:
             return move
         
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
+>>>>>>> dev
 
 # initialize the main function and run the program
 if __name__ == '__main__':

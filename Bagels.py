@@ -1,6 +1,8 @@
 """Bagels
 A logic game where you must guess a number based on clues"""
 
+print('Linkedin: https://www.linkedin.com/in/zengkev/')
+
 import random
 
 # Init
