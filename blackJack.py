@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 '''Let's play some Black Jack by Jing Wei Zeng'''
 
 print('Linkedin: https://www.linkedin.com/in/zengkev/')
@@ -6,6 +7,9 @@ print('Linkedin: https://www.linkedin.com/in/zengkev/')
 =======
 '''Let's play some Black Jack'''
 >>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
+=======
+'''Let's play some Black Jack'''
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
 
 import random, sys
 
@@ -51,8 +55,11 @@ def main():
         playerHand = [deck.pop(), deck.pop()]
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         break
 =======
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
         # Handle the player's actions
         print('Player bet:', bet)
         while True:
@@ -120,7 +127,10 @@ def main():
         input('Press Enter to play again')
         print('\n\n')
                 
+<<<<<<< HEAD
 >>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
 def getBet(maxBet):
     while True:
         print('How much do you want to bet? (1 to {}, or QUIT)'.format(maxBet))
@@ -142,6 +152,7 @@ def getDeck():
     for suit in (Hearts, Diamonds, Spades, Clubs):
         for rank in range(2, 11): # 9 non face cards
 <<<<<<< HEAD
+<<<<<<< HEAD
             deck.append(str(rank), suit)
         for rank in ('J', 'Q', 'K', 'A'): # Face and Ace cards
             deck.append(str(rank),suit)
@@ -152,6 +163,8 @@ def getDeck():
         
 
 =======
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
             deck.append((str(rank), suit))
         for rank in ('J', 'Q', 'K', 'A'): # Face and Ace cards
             deck.append((rank, suit))
@@ -233,7 +246,10 @@ def getMove(playerHand, yourMoney):
         if move ==  'D' and '(D)ouble' in moves:
             return move
         
+<<<<<<< HEAD
 >>>>>>> b6747c44b6259022f16813e27d0f95f5da950ee8
+=======
+>>>>>>> 1e298c03066de36845fbaec13b4c5f0cee648c75
 
 # initialize the main function and run the program
 if __name__ == '__main__':
