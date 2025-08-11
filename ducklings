@@ -1,0 +1,196 @@
+'''Ducklings Screensaver'''
+
+print('By Jing Wei Zeng')
+print('Linkedin: https://www.linkedin.com/in/zengkev/')
+print()
+print()
+
+import sys, random, shutil, time
+
+Pause = 0.2
+Density = 0.10
+
+Duckling_Width = 5
+Left = 'left'
+Right = 'right'
+Beady = 'beady'
+Wide = 'wide'
+Happy = 'happy'
+Aloof = 'aloof'
+Chubby = 'chubby'
+Very_Chubby = 'very chubby'
+Open = 'open'
+Closed = 'closed'
+Out = 'out'
+Down = 'down'
+Up = 'up'
+Head = 'head'
+Body = 'body'
+Feet = 'feet'
+
+# Create a terminal screen
+Width = shutil.get_terminal_size()[0]
+Width -= 1 # Can't print last line
+
+def main():
+    print("Welcome to Duckling ScreenSaver")
+    time.sleep(2)
+
+    ducklingLanes = [None] * (Width // Duckling_Width)
+
+    while True:
+        for laneNum, ducklingObj in enumerate(ducklingLanes):
+            # See if we should create a duckling in this lane
+            if (ducklingObj == None and random.random() <= Density):
+                # Place duckling in this lane
+                ducklingObj = Duckling()
+                ducklingLanes[laneNum] = ducklingObj
+
+            if ducklingObj != None:
+                # Draw a ducking
+                print(ducklingObj.getNextBodyPart(), end='')
+                if ducklingObj.partToDisplayNext == None:
+                    ducklingLanes[laneNum] = None
+            else:
+                print(' ' * Duckling_Width, end='')
+        print()
+        sys.stdout.flush() # Make sure text appears on the screen
+        time.sleep(Pause)
+
+
+class Duckling:
+    def __init__(self):
+        # Create a new duckling with random body features
+        self.direction = random.choice([Left, Right])
+        self.body = random.choice([Chubby, Very_Chubby])
+        self.mouth = random.choice([Open, Closed])
+        self.wing = random.choice([Out, Open, Closed])
+
+        if self.body == Chubby: # Chubby body only has beady eyes
+            self.eyes = Beady
+        else:
+            self.eyes = random.choice([Beady, Wide, Happy, Aloof])
+        
+        self.partToDisplayNext = Head
+
+    
+    # Method for Head, Direction, Body, Feet and Next
+    def getHeadStr(self):
+        headStr = ''
+        if self.direction == Left:
+            # mouth
+            if self.mouth == Open:
+                headStr += '>'
+            elif self.mouth == Closed:
+                headStr += '='
+            
+            # eyes
+            if self.eyes == Beady and self.body == Chubby:
+                headStr += '"'
+            elif self.eyes == Beady and self.body == Very_Chubby:
+                headStr += '" '
+            elif self.eyes == Wide:
+                headStr += "''"
+            elif self.eyes == Happy:
+                headStr += '^^'
+            elif self.eyes == Aloof:
+                headStr += '``'
+            
+            headStr += ') ' # Back of the head
+
+        if self.direction == Right:
+            headStr += ' ('
+
+            # eyes
+            if self.eyes == Beady and self.body == Chubby:
+                headStr += '"'
+            elif self.eyes == Beady and self.body == Very_Chubby:
+                headStr += ' "'
+            elif self.eyes == Wide:
+                headStr += "''"
+            elif self.eyes == Happy:
+                headStr += '^^'
+            elif self.eyes == Aloof:
+                headStr += '``'
+
+            # mouth
+            if self.mouth == Open:
+                headStr += '<'
+            elif self.mouth == Closed:
+                headStr += '='
+        
+        if self.body == Chubby:
+            headStr += ' '
+        
+        return headStr
+    
+    def getBodyStr(self):
+        # Body String
+        bodyStr = '('
+        if self.direction == Left:
+            # Get body String
+            if self.body == Chubby:
+                bodyStr += ' '
+            elif self.body == Very_Chubby:
+                bodyStr += '  '
+            
+            # Wings
+            if self.wing == Out:
+                bodyStr += '>'
+            elif self.wing == Up:
+                bodyStr += '^'
+            elif self.wing == Down:
+                bodyStr += 'v'
+            
+        if self.direction == Right:
+
+            # Wings
+            if self.wing == Out:
+                bodyStr += '<'
+            elif self.wing == Up:
+                bodyStr += '^'
+            elif self.wing == Down:
+                bodyStr += 'v'
+
+            # Get body String
+            if self.body == Chubby:
+                bodyStr += ' '
+            elif self.body == Very_Chubby:
+                bodyStr += '  '
+        
+        bodyStr += ')'
+
+        if self.body == Chubby:
+            bodyStr += ' '
+        
+        return bodyStr
+    
+
+    # Get the feet
+    def getFeetStr(self):
+        if self.body == Chubby:
+            return ' ^^ '
+        elif self.body == Very_Chubby:
+            return ' ^ ^ '
+    
+    # Get teh next body part
+    def getNextBodyPart(self):
+        if self.partToDisplayNext == Head:
+            self.partToDisplayNext = Body
+            return self.getHeadStr()
+        elif self.partToDisplayNext == Body:
+            self.partToDisplayNext = Feet
+            return self.getBodyStr()
+        elif self.partToDisplayNext == Feet:
+            self.partToDisplayNext = None
+            return self.getFeetStr()
+        
+
+
+if __name__ == '__main__':
+    try:
+        main()
+    except KeyboardInterrupt:
+        sys.exit()
+
+
