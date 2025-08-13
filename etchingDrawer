@@ -1,0 +1,76 @@
+''' Etching Drawer, Using WASD keys to draw on terminal canvas'''
+
+
+print('By Jing Wei Zeng')
+print('Linkedin: https://www.linkedin.com/in/zengkev/')
+print()
+print()
+
+
+import shutil, sys
+
+# Set up line characters
+
+upDown = chr(9474)
+leftRight = chr(9472)
+downRight = chr(9484)
+downLeft = chr(9488)
+upRight = chr(9492)
+upLeft = chr(9496)
+upDownRight = chr(9500)
+upDownLeft = chr(9508)
+downLeftRight = chr(9516)
+upLeftRight = chr(9524)
+cross = chr(9532)
+
+# List of chr() https://inventwithpython.com/chr
+
+canvasWidth, canvasHeight = shutil.get_terminal_size()
+canvasWidth -= 1
+canvasHeight -= 5
+
+canvas = {}
+cursorX = 0
+cursorY = 0
+
+def getCanvasString(canvasData, cx, cy):
+    canvasStr = ''
+    for rowNum in range(canvasHeight):
+        for columnNum in range (canvasWidth):
+            if columnNum == cx and rowNum == cy:
+                canvasStr += '#'
+                continue
+            
+            # now we add the line char for this point to canvasStr
+            cell = canvasData.get((columnNum, rowNum))
+            if cell in (set(['W', 'S']), set(['W']), set(['S'])):
+                canvasStr += upDown
+            elif cell in (set(['A', 'D']), set(['A']), set(['D'])):
+                canvasStr += leftRight
+            elif cell == set(['S', 'D']):
+                canvasStr += downRight
+            elif cell == set(['A', 'S']):
+                canvasStr += downLeft
+            elif cell == set(['W', 'D']):
+                canvasStr += upRight
+            elif cell == set(['W', 'A']):
+                canvasStr += upLeft
+            elif cell == set(['W', 'S', 'D']):
+                canvasStr += upDownRight
+            elif cell == set(['W', 'S', 'A']):
+                canvasStr += upDownLeft
+            elif cell == set(['A', 'S', 'D']):
+                canvasStr += downLeftRight
+            elif cell == set(['W', 'A', 'D']):
+                canvasStr += upLeftRight   
+            elif cell == set(['W', 'A', 'S', 'D']):
+                canvasStr += cross
+            elif cell == none:
+                canvasStr += ' '
+        canvasStr += '\n'
+    return canvasStr
+
+moves = []
+while True: # Main loop program
+    print(getCanvasString(canvas, cursorX, cursorY))
+    
