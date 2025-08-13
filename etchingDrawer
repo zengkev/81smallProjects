@@ -65,7 +65,7 @@ def getCanvasString(canvasData, cx, cy):
                 canvasStr += upLeftRight   
             elif cell == set(['W', 'A', 'S', 'D']):
                 canvasStr += cross
-            elif cell == none:
+            elif cell == None:
                 canvasStr += ' '
         canvasStr += '\n'
     return canvasStr
@@ -73,4 +73,65 @@ def getCanvasString(canvasData, cx, cy):
 moves = []
 while True: # Main loop program
     print(getCanvasString(canvas, cursorX, cursorY))
-    
+    print("WASD key to move, H for help, C to clear, F to save or Quit.")
+    response = input('> ').upper()
+
+    if response == 'quit':
+        print('Thanks for playing')
+        sys.exit()
+    elif response == 'H':
+        print("You don't need help")
+        continue
+    elif response == 'C':
+        canvas = {}
+        moves.append('C')
+    elif response == 'F':
+        try:
+            print('Enter the filename:')
+            filename = input('> ')
+            if not filename.endswith('.txt'):
+                filename += '.txt'
+            with open(filename, 'w', encoding='utf-8') as file:
+                file.write(''.join(moves) + '\n')
+                file.write(getCanvasString(canvas, None, None))
+        except:
+            print("Error: could not save bruh")
+
+    for command in response:
+        if command not in ('W', 'A', 'S', 'D'):
+            continue
+        moves.append(command)
+
+        if canvas == {}:
+            if command in ('W', 'S'):
+                canvas[(cursorX, cursorY)] = set(['W', 'S'])
+            elif command in ('A', 'D'):
+                canvas[(cursorX, cursorY)] = set(['A', 'D'])
+            
+        # Update x and y
+        if command == 'W' and cursorY > 0:
+            canvas[(cursorX, cursorY)].add(command)
+            cursorY -= 1
+        elif command == 'S' and cursorY < canvasHeight - 1:
+            canvas[(cursorX, cursorY)].add(command)
+            cursorY += 1
+        elif command == 'A' and cursorX > 0:
+            canvas[(cursorX, cursorY)].add(command)
+            cursorX -= 1
+        elif command == 'D' and cursorX < canvasWidth - 1:
+            canvas[(cursorX, cursorY)].add(command)
+            cursorX += 1
+        else:
+            continue
+            
+        if (cursorX, cursorY) not in canvas:
+            canvas[((cursorX, cursorY))] = set()
+        
+        if command == 'W':
+            canvas[((cursorX, cursorY))].add('S')
+        elif command == 'S':
+            canvas[((cursorX, cursorY))].add('W')
+        elif command == 'A':
+            canvas[((cursorX, cursorY))].add('D')
+        elif command == 'D':
+            canvas[((cursorX, cursorY))].add('S')
