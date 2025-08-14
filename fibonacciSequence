@@ -1,0 +1,66 @@
+'''Mathematicall pattern where sequence is always the sum of previous two number'''
+
+print('By Jing Wei Zeng')
+print('Linkedin: https://www.linkedin.com/in/zengkev/')
+print()
+print()
+
+import sys
+
+# Loop Fibonacci Sequence starting with 0, 1 
+
+while True:
+    while True:
+        print("Enter the Nth Fibonacci number: ")
+        response = input('> ').upper()
+
+        if response == 'QUIT':
+            sys.exit()
+
+        if response.isdecimal() and int(response != 0):
+            nth = int(response)
+            break # we got our number
+
+        print('Please enter a number greater than 0 or quit')
+
+    print()
+
+    if nth == 1: 
+        print('0')
+        print()
+        continue
+
+    elif nth == 2:
+        print('0, 1')
+        print()
+
+    # Display a warning
+    if nth >= 10000:
+        print('This will take LOOOOONG time.')
+
+    # Main function for fibonnacci number
+    secondToLastNumber = 0
+    lastNumber = 1
+    fibNumberCalculated = 2
+    print('0, 1, ', end='') # first 2 fib number
+
+    while True:
+        nextNumber = secondToLastNumber + lastNumber
+        fibNumberCalculated += 1
+
+        # Display the next number
+        print(nextNumber, end='')
+
+        if fibNumberCalculated == nth:
+            print()
+            print()
+            print('the #', fibNumberCalculated, ' Fibonacci ', 'number is ', nextNumber, sep='')
+            break
+
+        # Print a comma
+        print(', ', end='')
+
+        # shift the last two number:
+        secondToLastNumber = lastNumber
+        lastNumber = nextNumber
+
